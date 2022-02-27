@@ -1,0 +1,14 @@
+header {
+    nav {
+        background-color: $mainColor;
+
+        a:focus,
+        a:focus.active {
+            background-color: $tabActived !important;
+        }
+
+        .indicator{
+            background-color: $tabUnderline !important;
+        }
+    }
+}
