@@ -1,4 +1,44 @@
 @import 'root';
-@import 'app';
-@import 'navBar';
-@import 'carWidget';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: black;
+}
+
+//Header
+header {
+    nav {
+        background-color: $mainColor;
+
+        a:focus,
+        a:focus.active {
+            background-color: $tabActived !important;
+        }
+
+        .indicator{
+            background-color: $tabUnderline !important;
+        }
+    }
+}
+
+//Cart
+#cart{
+    cursor: pointer;
+
+    span{
+        margin-left: 3px;
+    }
+}
+
+//Item Counter
+#itemCounter{
+    div{
+        margin-bottom: 2rem;
+        
+        span{
+            margin: 1.5rem;
+        }
+    }
+}

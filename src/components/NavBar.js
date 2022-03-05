@@ -1,5 +1,5 @@
-import madgeek from '../../assets/madgeek.png';
-import CarWidget from './CarWidget/CarWidget';
+import madgeek from '../assets/madgeek-logo.png'
+import CarWidget from './CarWidget';
 
 const NavBar = () => {
     return (

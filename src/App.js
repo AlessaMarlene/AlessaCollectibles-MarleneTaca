@@ -2,8 +2,8 @@ import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
 import { useEffect } from "react";
 import './styles/global.scss';
-import NavBar from "./components/NavBar/NavBar";
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import NavBar from './components/NavBar';
+import ItemListContainer from './components/ItemListContainer';
 
 function App() {
     useEffect(() => {
