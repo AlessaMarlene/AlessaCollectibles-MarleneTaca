@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "Batman The Dark Knight Returns",
+        "description": "Any description",
+        "price": 500,
+        "pictureUrl": "https://i1.wp.com/shop.knowherecollectibles.com.ar/wp-content/uploads/2021/12/batman-the-dark-knight-returns_dc-comics_gallery_5fcec400923ea-e1640811394324.jpeg?fit=831%2C747&ssl=1"
+    },
+    {
+        "id": 2,
+        "title": "Hellraiser: Ultimate Pinhead",
+        "description": "Any description",
+        "price": 250,
+        "pictureUrl": "https://i1.wp.com/shop.knowherecollectibles.com.ar/wp-content/uploads/2020/08/4893883a-ac1f-4fd4-8ffe-7a680ea7e709.jpg?fit=720%2C540&ssl=1"
+    },
+    {
+        "id": 3,
+        "title": "Back To The Future II: Ultimate Doc Brown",
+        "description": "Any description",
+        "price": 300,
+        "pictureUrl": "https://i1.wp.com/shop.knowherecollectibles.com.ar/wp-content/uploads/2021/10/Doc-6-1.jpeg?fit=1195%2C735&ssl=1"
+    }
+]
