@@ -16,7 +16,7 @@ const ItemList = () => {
         const promise = new Promise((res, rej) => {
             setTimeout(() => {
                 res(figuresMock);
-            }, 3000);
+            }, 2000);
         });
         
         promise.then(res => {

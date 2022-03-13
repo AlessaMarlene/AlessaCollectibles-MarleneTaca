@@ -51,10 +51,67 @@ header {
 //Item Counter
 #itemCounter{
     div{
-        margin-bottom: 2rem;
+        margin: 1rem 0 2rem 0;
         
         span{
             margin: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        a{
+            background-color: $buttonsColor;
+        }
+    }
+
+    #addCartButton{
+        width: 50%;
+        background-color: $buttonsColor;
+    }
+}
+
+//Item Detail
+#primaryDetails, #productDescription, #primaryDetails > div:last-child, #productDescription > div:first-child{
+    display: flex;
+}
+
+#primaryDetails{
+    .detailsBox{
+        flex: 1 1 50%;
+
+        img{
+            margin: auto;
+        }
+    }
+
+    div:last-child{
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+#productDescription{
+    float: right;
+    padding-top: 4rem;
+    width: 50%;
+    
+    #descriptionTitle{
+        font-size: 1.5rem;
+        font-weight: 500;
+        justify-content: flex-start;
+        flex: 1 1 30%;
+        
+        p{
+            padding-right: 4rem;
+        }
+    }
+    
+    #descriptionBody{
+        padding-left: 2rem;
+        flex: 1 1 70%;
+    
+        p:first-child{
+            font-size: 1.3rem;
+            padding-bottom: 15px;
         }
     }
 }
