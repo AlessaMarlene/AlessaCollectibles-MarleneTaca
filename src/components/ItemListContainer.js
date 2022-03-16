@@ -2,7 +2,7 @@ import ItemList from "./ItemList";
 
 const ItemListContainer = ({greeting}) => {
     return (
-        <main>
+        <main id="collectibles">
             <h3>{greeting}</h3>
             <ItemList/>
         </main>

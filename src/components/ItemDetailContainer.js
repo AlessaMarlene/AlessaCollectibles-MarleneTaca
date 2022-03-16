@@ -1,12 +1,7 @@
 import ItemDetail from "./ItemDetail";
 import figuresMock from '../utils/figuresMock.json';
 import { useEffect, useState } from "react";
-
-const getItem = () => new Promise((res, rej) => {
-        setTimeout(() => {
-            res(figuresMock[2]);
-        }, 2000);
-});
+import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
     const status = {
@@ -17,14 +12,23 @@ const ItemDetailContainer = () => {
     let response;
     const [state, setStatus] = useState(status.initial);
     const [figureSelected, setFigureSelected] = useState({});
+    const params = useParams();
 
     useEffect(() => {
-        getItem()
-            .then(r => {
-                setFigureSelected(r);
-                setStatus('resolved');
-            })
-            .catch(err => setStatus('rejected'));
+        const timerId = setTimeout(() => {
+            const promise = new Promise((res, rej) => {
+                res(figuresMock.find(f => f.id == params.id));
+            });
+
+            promise
+                .then(r => {
+                    setFigureSelected(r);
+                    setStatus('resolved');
+                })
+                .catch(err => setStatus('rejected'));
+        }, 2000);
+
+        return () => clearTimeout(timerId);
     }, []);
 
     if(state === status.initial) response = <h4>Loading figure details...</h4>

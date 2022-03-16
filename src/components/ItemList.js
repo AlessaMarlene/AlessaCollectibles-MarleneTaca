@@ -13,16 +13,18 @@ const ItemList = () => {
     const [figures, setFigures] = useState([]);
 
     useEffect(() => {
-        const promise = new Promise((res, rej) => {
-            setTimeout(() => {
+        const timerId = setTimeout(() => {
+            const promise = new Promise((res, rej) => {
                 res(figuresMock);
-            }, 2000);
-        });
-        
-        promise.then(res => {
-            setFigures(res);
-            setStatus(status.resolved);
-        }).catch(err => setStatus(status.rejected));
+            });
+
+            promise.then(res => {
+                setFigures(res);
+                setStatus(status.resolved);
+            }).catch(err => setStatus(status.rejected));
+        }, 2000);
+
+        return () => clearTimeout(timerId);
     }, [])
     
     if(state === status.initial) response = <h4>Loading figures...</h4>

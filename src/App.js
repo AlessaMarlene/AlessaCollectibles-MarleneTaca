@@ -5,6 +5,7 @@ import './styles/global.scss';
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
     useEffect(() => {
@@ -13,9 +14,17 @@ function App() {
 
     return (
         <div>
-            <NavBar/>
-            <ItemListContainer greeting='Welcome to the n°1 action figures store!!'/>
-            <ItemDetailContainer/>
+            <BrowserRouter>
+                <NavBar/>
+                <Routes>
+                    <Route path='/' element={<ItemListContainer greeting='Welcome to the n°1 action figures store!!'/>}/>
+                    <Route path='/collectibles' element={<ItemListContainer greeting=''/>}/>
+                    <Route path='/collectibles/:id' element={<ItemDetailContainer/>}/>
+                    <Route path='/sale' element={<div>Sale</div>}/>
+                    <Route path='/myAccount' element={<div>My Account</div>}/>
+                    <Route path='/contact' element={<div>Contact</div>}/>
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }
