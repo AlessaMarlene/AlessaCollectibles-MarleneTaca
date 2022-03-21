@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 
 const ItemCount = ({stock, initialState, onAdd}) => {
     const [itemCounter, setItemCounter] = useState(initialState);
@@ -9,6 +10,8 @@ const ItemCount = ({stock, initialState, onAdd}) => {
     const handleClick = (operator) => {
         if(operator === '+' && itemCounter < stock) setItemCounter(itemCounter + 1);
         else if(operator === '-' && itemCounter > 1) setItemCounter(itemCounter - 1);
+
+        onAdd(itemCounter);
     }
 
     return (
@@ -29,7 +32,13 @@ const ItemCount = ({stock, initialState, onAdd}) => {
                     <FontAwesomeIcon icon={faPlus}/>
                 </a>
             </div>
-            <a className="waves-effect waves-light btn-large" id='addCartButton'>Add to cart</a>
+            <Link 
+                to='/cart'
+                className="waves-effect waves-light btn-large"
+                id="addCartButton"
+            >
+                Add to cart
+            </Link>
         </div>
     );
 }
