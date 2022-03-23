@@ -1,14 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import M from 'materialize-css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import ItemCount from './ItemCount';
+import { CartContext } from './context/CartContext';
 
 const ItemDetail = ({figure}) => {
-    const [itemsQuantity, setItemsQuantity] = useState(1);
+    const [itemQuantity, setItemQuantity] = useState(1);
+    const {contextValue} = useContext(CartContext);
     
     const onAdd = (quantityToAdd) => {
-        setItemsQuantity(quantityToAdd);
+        setItemQuantity(quantityToAdd);
+        contextValue.addToCart(figure, quantityToAdd);
     }
 
     useEffect(() => M.Materialbox.init(document.querySelectorAll('.materialboxed')), []);
@@ -22,7 +25,7 @@ const ItemDetail = ({figure}) => {
                 <div className='detailsBox'>
                     <h2>{figure.title}</h2>
                     <h3>${figure.price}</h3>
-                    <ItemCount stock={10} initialState={itemsQuantity} onAdd={onAdd}/>
+                    <ItemCount stock={10} initialState={itemQuantity} onAdd={onAdd}/>
                 </div>
             </div>
             <div id='productDescription'>
@@ -36,7 +39,7 @@ const ItemDetail = ({figure}) => {
                 </div>
             </div>
         </main>
-    );
+    )
 }
 
 export default ItemDetail;
