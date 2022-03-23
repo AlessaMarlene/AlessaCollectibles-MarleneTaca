@@ -6,12 +6,16 @@ import { Link } from 'react-router-dom';
 
 const ItemCount = ({stock, initialState, onAdd}) => {
     const [itemCounter, setItemCounter] = useState(initialState);
+    const [productsSentToCart, setProductsSentToCart] = useState(false);
 
     const handleClick = (operator) => {
         if(operator === '+' && itemCounter < stock) setItemCounter(itemCounter + 1);
         else if(operator === '-' && itemCounter > 1) setItemCounter(itemCounter - 1);
+    }
 
+    const handleConfirmation = () => {
         onAdd(itemCounter);
+        setProductsSentToCart(true);
     }
 
     return (
@@ -32,13 +36,24 @@ const ItemCount = ({stock, initialState, onAdd}) => {
                     <FontAwesomeIcon icon={faPlus}/>
                 </a>
             </div>
-            <Link 
-                to='/cart'
-                className="waves-effect waves-light btn-large"
-                id="addCartButton"
-            >
-                Add to cart
-            </Link>
+            {
+                productsSentToCart ?
+                <Link 
+                    to='/cart'
+                    className="waves-effect waves-light btn-large"
+                    id="addCartButton"
+                >
+                    Go to cart
+                </Link> 
+                :
+                <button 
+                    onClick={handleConfirmation}
+                    className="waves-effect waves-light btn-large"
+                    id="addCartButton"
+                >
+                    Add to cart
+                </button>
+            }
         </div>
     );
 }

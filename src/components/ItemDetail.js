@@ -5,11 +5,10 @@ import { useEffect, useState } from 'react';
 import ItemCount from './ItemCount';
 
 const ItemDetail = ({figure}) => {
-    const [itemsQuantity, setItemsQueantity] = useState(1);
-    console.log(itemsQuantity)
-
+    const [itemsQuantity, setItemsQuantity] = useState(1);
+    
     const onAdd = (quantityToAdd) => {
-        setItemsQueantity(quantityToAdd);
+        setItemsQuantity(quantityToAdd);
     }
 
     useEffect(() => M.Materialbox.init(document.querySelectorAll('.materialboxed')), []);
