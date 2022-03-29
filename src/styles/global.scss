@@ -115,3 +115,14 @@ header {
         }
     }
 }
+
+//Cart Item
+#selectedProductContainer{
+    margin: 2em 4em;
+}
+
+#selectedProductInfo{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}

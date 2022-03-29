@@ -36,7 +36,7 @@ const ItemCount = ({stock, initialState, onAdd}) => {
                     <FontAwesomeIcon icon={faPlus}/>
                 </a>
             </div>
-            {/* {
+            {
                 productsSentToCart ?
                 <Link 
                     to='/cart'
@@ -45,7 +45,7 @@ const ItemCount = ({stock, initialState, onAdd}) => {
                 >
                     Go to cart
                 </Link> 
-                : */}
+                :
                 <button 
                     onClick={handleConfirmation}
                     className="waves-effect waves-light btn-large"
@@ -53,7 +53,7 @@ const ItemCount = ({stock, initialState, onAdd}) => {
                 >
                     Add to cart
                 </button>
-            {/* } */}
+            }
         </div>
     );
 }
