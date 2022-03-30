@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Item from './Item';
-import figuresMock from '../utils/figuresMock.json';
+import db from '../firebase';
+import { collection, getDocs } from "firebase/firestore";
 
 const ItemList = () => {
     const status = {
@@ -13,19 +14,19 @@ const ItemList = () => {
     const [figures, setFigures] = useState([]);
 
     useEffect(() => {
-        const timerId = setTimeout(() => {
-            const promise = new Promise((res, rej) => {
-                res(figuresMock);
-            });
-
-            promise.then(res => {
-                setFigures(res);
+        const productCollection = getDocs(collection(db, "products"));
+        productCollection
+            .then(r => {
+                const allProducts = [];
+                r.forEach(doc => {
+                    const newFigure = {id: doc.id, ...doc.data()};
+                    allProducts.push(newFigure);
+                });
+                setFigures(allProducts);
                 setStatus(status.resolved);
-            }).catch(err => setStatus(status.rejected));
-        }, 2000);
-
-        return () => clearTimeout(timerId);
-    }, [])
+            })
+            .catch(e => setStatus(status.rejected));
+    }, []);
     
     if(state === status.initial) response = <h4>Loading figures...</h4>
     else if(state === status.rejected) response = <h4>We can't seem to find any results now. Try again later.</h4>

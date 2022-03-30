@@ -1,7 +1,8 @@
 import ItemDetail from "./ItemDetail";
-import figuresMock from '../utils/figuresMock.json';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import db from '../firebase';
+import { doc, getDoc } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
     const status = {
@@ -15,20 +16,15 @@ const ItemDetailContainer = () => {
     const params = useParams();
 
     useEffect(() => {
-        const timerId = setTimeout(() => {
-            const promise = new Promise((res, rej) => {
-                res(figuresMock.find(f => f.id == params.id));
-            });
+        const docRef = doc(db, "products", `${params.id}`);
+        const product = getDoc(docRef);
 
-            promise
-                .then(r => {
-                    setFigureSelected(r);
-                    setStatus('resolved');
-                })
-                .catch(err => setStatus('rejected'));
-        }, 2000);
-
-        return () => clearTimeout(timerId);
+        product
+            .then(r => {
+                setFigureSelected(r.data());
+                setStatus('resolved');
+            })
+            .catch(e => setStatus('rejected'));
     }, []);
 
     if(state === status.initial) response = <h4>Loading figure details...</h4>
