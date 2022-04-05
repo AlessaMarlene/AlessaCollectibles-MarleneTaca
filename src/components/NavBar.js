@@ -19,12 +19,12 @@ const NavBar = () => {
                 </div>
                 <div className="nav-content row valign-wrapper">
                     <ul id="tabs" className="tabs tabs-transparent col s11">
-                        <li className="tab" onClick={() => navigateTo('sale')}>
-                            <a href='/sale' className='black-text'>Sale Items</a>
+                        <li className="tab" onClick={() => navigateTo('brands')}>
+                            <a href='/brands' className='black-text'>Brands</a>
                         </li>
 
-                        <li className="tab" onClick={() => navigateTo('collectibles')}>
-                            <a href='/collectibles' className="active black-text">Collectibles</a>
+                        <li className="tab" onClick={() => navigateTo('')}>
+                            <a href='/' className="active black-text">Collectibles</a>
                         </li>
 
                         <li className="tab" onClick={() => navigateTo('myAccount')}>

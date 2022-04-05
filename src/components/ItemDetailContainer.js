@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import db from '../firebase';
 import { doc, getDoc } from "firebase/firestore";
+import { PacmanLoader } from "react-spinners";
 
 const ItemDetailContainer = () => {
     const status = {
@@ -13,26 +14,26 @@ const ItemDetailContainer = () => {
     let response;
     const [state, setStatus] = useState(status.initial);
     const [figureSelected, setFigureSelected] = useState({});
-    const params = useParams();
+    const {id} = useParams();
 
     useEffect(() => {
-        const docRef = doc(db, "products", `${params.id}`);
-        const product = getDoc(docRef);
-
-        product
+        const docRef = doc(db, "products", `${id}`);
+        getDoc(docRef)
             .then(r => {
-                setFigureSelected(r.data());
-                setStatus('resolved');
+                setFigureSelected({id: id, ...r.data()});
+                setStatus(status.resolved);
             })
-            .catch(e => setStatus('rejected'));
+            .catch(e => setStatus(status.rejected));
     }, []);
 
-    if(state === status.initial) response = <h4>Loading figure details...</h4>
-    else if(state === status.rejected) response = <h4>We can't seem to find this product. Try again later.</h4>
-    else response = <ItemDetail figure={figureSelected}/>
+    if(state == status.rejected) response = <h4>We can't seem to find this product. Try again later.</h4>
+    else if(state === status.resolved) response = <ItemDetail figure={figureSelected}/>
 
     return (
-        <div>{response}</div>
+        <main>
+            <PacmanLoader loading={state === status.initial && true} size={100} color={'#f37223'}/>
+            {response}
+        </main>
     );
 }
 

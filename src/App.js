@@ -6,6 +6,7 @@ import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
+import BrandsContainer from './components/BrandsContainer';
 import {CartProvider} from './components/context/CartContext';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -20,10 +21,10 @@ function App() {
                 <BrowserRouter>
                     <NavBar/>
                     <Routes>
-                        <Route path='/' element={<ItemListContainer greeting='Welcome to the n°1 action figures store!!'/>}/>
-                        <Route path='/collectibles' element={<ItemListContainer greeting=''/>}/>
+                        <Route path='/' element={<ItemListContainer/>}/>
                         <Route path='/collectibles/:id' element={<ItemDetailContainer/>}/>
-                        <Route path='/sale' element={<div>Sale</div>}/>
+                        <Route path='/brands' element={<BrandsContainer/>}/>
+                        <Route path='/brands/:brandId' element={<ItemListContainer/>}/>
                         <Route path='/myAccount' element={<div>My Account</div>}/>
                         <Route path='/contact' element={<div>Contact</div>}/>
                         <Route path='/cart' element={<Cart/>}/>
